@@ -10,7 +10,7 @@ function PostForm({post}) {
     const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
         defaultValues:{
             title:post?.title || '',
-            slug: psot?.slug || '',
+            slug: post?.slug || '',
             content: post?.content || '',
             status: post?.status || 'active'
 
@@ -54,10 +54,10 @@ function PostForm({post}) {
     }
     
     const slugTransform = useCallback((value) => {
-        if(value && typeof value ===' string'){
+        if(value && typeof value ==='string'){
             return value
             .trim()
-            .toLoweCase()
+            .toLowerCase()
             .replace(/^[a-zA-Z\d\s]+/g,'-')
             .replace(/\s/g, '-')
         }
