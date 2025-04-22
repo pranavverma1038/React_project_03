@@ -4,7 +4,7 @@ import {Container, PostCard} from '../components'
 
 
 function Home() {
-    const [posts,setPosts] = useState()
+    const [posts,setPosts] = useState([])
 
     useEffect(()=>{
         appwriteService.getPosts().then((posts)=>{
@@ -14,7 +14,7 @@ function Home() {
         })
     },[])
 
-    if(posts.length ===0){
+    if(posts.length === 0){
         return (
             <Container>
                 <div className='flex flex-wrap'>
