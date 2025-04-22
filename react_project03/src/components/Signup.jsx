@@ -50,6 +50,7 @@ function Signup() {
                 {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
                 <form
                 onSubmit={handleSubmit(create)}>
+                <div className='space-y-5'>
                     <Input
                         label="Full Name: "
                         placeholder="Enter your full name"
@@ -78,9 +79,10 @@ function Signup() {
                             })}
                         />
                         <Button
-                        typr="submit"
+                        type="submit"
                         className='w-full'
-                        ></Button>
+                        >Create Account</Button>
+                    </div>
                 </form>
         </div>
     </div>
