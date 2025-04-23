@@ -19,8 +19,13 @@ function PostForm({post}) {
 
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
+    console.group("auth data", userData);
 
     const submit = async(data) => {
+        if (!userData || !userData.$id) {
+            console.error("User not logged in. Cannot create post.");
+            return;
+        }
         if(post){
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
