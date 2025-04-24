@@ -6,6 +6,7 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
 export default function Post() {
+    
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -13,10 +14,12 @@ export default function Post() {
     const userData = useSelector((state) => state.auth.userData);
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
-
+    
     useEffect(() => {
         if (slug) {
+            
             appwriteService.getPost(slug).then((post) => {
+               
                 if (post) setPost(post);
                 else navigate("/");
             });
@@ -31,7 +34,7 @@ export default function Post() {
             }
         });
     };
-
+    
     return post ? (
         <div className="py-8">
             <Container>

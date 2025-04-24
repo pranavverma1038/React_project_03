@@ -131,7 +131,7 @@ export class Service{
             return "No image added";
         }
     
-        return this.bucket.getFilePreview(
+        return this.bucket.getFileView(
             conf.appwriteBucketId,
             fileId
         )
