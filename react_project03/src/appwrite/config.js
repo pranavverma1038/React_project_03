@@ -23,9 +23,9 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug || ID.unique(),
                 {
-                    Title:title,
-                    Content:content,
-                    FeaturedImage:featuredImage,
+                    title,
+                    content,
+                    featuredImage,
                     status,
                     userId,
                 }
@@ -44,9 +44,9 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug,
                 {
-                    Title:title,
-                    Content:content,
-                    FeaturedImage:featuredImage,
+                    title,
+                    content,
+                    featuredImage,
                     status,
                }
             )
@@ -114,7 +114,6 @@ export class Service{
         try{
             await this.bucket.deleteFile(
                 conf.appwriteBucketId,
-                ID.unique(),
                 fileId
             )
             return true
