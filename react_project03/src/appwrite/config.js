@@ -16,16 +16,16 @@ export class Service{
         this.bucket = new Storage(this.client);// storage is dafault username but bucket is custom
     }
 
-    async createPost(title, slug, content, featuredImage, status, userId){
+    async createPost({title, slug, content, featuredImage, status, userId}){
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+                slug || ID.unique(),
                 {
-                    title,
-                    content,
-                    featuredImage,
+                    Title:title,
+                    Content:content,
+                    FeaturedImage:featuredImage,
                     status,
                     userId,
                 }
@@ -44,9 +44,9 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug,
                 {
-                    title,
-                    content,
-                    featuredImage,
+                    Title:title,
+                    Content:content,
+                    FeaturedImage:featuredImage,
                     status,
                }
             )
@@ -95,7 +95,6 @@ export class Service{
         }
     }
 
-    //file upload method
 
     async uploadFile(file){
         try{
@@ -141,10 +140,6 @@ export class Service{
 
 
 }
-
-
-
-
 
 
 
