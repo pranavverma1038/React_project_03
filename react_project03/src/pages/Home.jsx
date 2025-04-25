@@ -1,18 +1,24 @@
 import React, {useEffect, useState} from 'react'
 import appwriteService from '../appwrite/config'
 import {Container, PostCard} from '../components'
+import { useSelector } from 'react-redux'
 
 
 function Home() {
     const [posts,setPosts] = useState([])
-
+    const isLoggedIn = useSelector((state)=> state.auth.status);
     useEffect(()=>{
-        appwriteService.getPosts().then((posts)=>{
-            if(posts){
-                setPosts(posts.documents)
-            }
-        })
-    },[])
+        if(isLoggedIn){
+            appwriteService.getPosts().then((posts)=>{
+                if(posts){
+                    setPosts(posts.documents)
+                }
+            });
+        }else{
+            setPosts([])
+        }
+        
+    },[isLoggedIn])
 
     if(posts.length === 0){
         return (
