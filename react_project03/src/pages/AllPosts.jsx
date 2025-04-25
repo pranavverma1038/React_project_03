@@ -27,7 +27,7 @@ function AllPosts() {
       <Container>
       {!isLoggedIn &&
         <div className="text-center text-xl font-semibold text-gray-700">
-          Please log in to view posts.
+          Please login to view posts
         </div>
       }
         
